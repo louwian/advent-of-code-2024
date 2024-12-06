@@ -41,6 +41,35 @@ pub fn solve_part1() -> i32 {
 
 }
 
+pub fn solve_part2() -> i32 {
+
+    let text: String = ingest_txt("./src/day4/data.txt");
+    let vertical_text: Vec<String> = process_txt_vertical(text.clone());
+
+    let moves_pos: Vec<(i16, i16)> = vec![(1, -1), (0, 0), (-1, 1)];
+    let moves_neg: Vec<(i16, i16)> = vec![(-1, -1), (0, 0), (1, 1)];
+
+    // Traverse the grid
+    let mut count = 0;
+    for i in 1..vertical_text[0].len()-1 {
+        for j in 1..vertical_text.len()-1 {
+            let mut text_pos: String = String::new();
+            let mut text_neg: String = String::new();
+            for (x, y) in moves_pos.iter() {
+                text_pos.push(vertical_text[(j as i16 + y) as usize].chars().nth((i as i16 + x) as usize).unwrap());
+            }
+            for (x, y) in moves_neg.iter() {
+                text_neg.push(vertical_text[(j as i16 + y) as usize].chars().nth((i as i16 + x) as usize).unwrap());
+            }
+            if (text_pos == "MAS" || text_pos == "SAM") && (text_neg == "MAS" || text_neg == "SAM") {
+                count += 1;
+            }
+        }
+    }
+
+    count
+}
+
 fn ingest_txt(file_path: &str) -> String {
     let contents: String = fs::read_to_string(file_path).expect("Something went wrong reading the file");
     contents

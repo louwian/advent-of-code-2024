@@ -28,7 +28,7 @@ fn main() {
         }
         "day4" => {
             println!("Answer to day4 part1: {}", day4::solve_part1());
-            // println!("Answer to day4 part2: {}", day4::solve_part2());
+            println!("Answer to day4 part2: {}", day4::solve_part2());
         }
         _ => {
             eprintln!("Unknown day: {}", day);
