@@ -7,6 +7,8 @@ use std::env;
 #[path = "day5/day5.rs"] mod day5;
 #[path = "day6/day6.rs"] mod day6;
 #[path = "day7/day7.rs"] mod day7;
+#[path = "day8/day8.rs"] mod day8;
+#[path = "day9/day9.rs"] mod day9;
 
 fn main() {
     let args: Vec<String> = env::args().collect();
@@ -44,6 +46,14 @@ fn main() {
         "day7" => {
             println!("Answer to day7 part1: {}", day7::solve_part1());
             println!("Answer to day7 part2: {}", day7::solve_part2());
+        }
+        "day8" => {
+            println!("Answer to day8 part1: {}", day8::solve_part1());
+            println!("Answer to day8 part2: {}", day8::solve_part2());
+        }
+        "day9" => {
+            println!("Answer to day9 part1: {}", day9::solve_part1());
+            println!("Answer to day9 part2: {}", day9::solve_part2());
         }
         _ => {
             eprintln!("Unknown day: {}", day);
